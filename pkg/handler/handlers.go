@@ -27,7 +27,7 @@ func NewTemplateHandler(r *HttpTemplateRepository) {
 func (hr *HttpTemplateRepository) Index(w http.ResponseWriter, r *http.Request) {
 	remoteIp := r.RemoteAddr
 	hr.App.Session.Put(r.Context(), "ip-address", remoteIp)
-	render.WriteTemplateFromFullCache("index.page.html", w, &models.TemplateData{})
+	render.WriteTemplateFromFullCache("complete.page.html", w, &models.TemplateData{})
 }
 
 func (hr *HttpTemplateRepository) About(w http.ResponseWriter, r *http.Request) {

@@ -37,7 +37,7 @@ func main() {
 	}
 
 	App.TemplateCache = temp
-	App.UseCache = true
+	App.UseCache = false
 
 	render.NewtTemplateRenderer(&App)
 
