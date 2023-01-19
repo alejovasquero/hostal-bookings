@@ -24,5 +24,7 @@ func RoutesWithChi(app *config.AppConfig) http.Handler {
 	fileServer := http.FileServer(http.Dir("./static"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
 
+	fileServerHtml := http.FileServer(http.Dir("./pages"))
+	mux.Handle("/pages/*", http.StripPrefix("/pages", fileServerHtml))
 	return mux
 }
