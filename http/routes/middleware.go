@@ -20,10 +20,11 @@ func NoSurf(config config.AppConfig) func(http.Handler) http.Handler {
 		csrfHandler := nosurf.New(next)
 		csrfHandler.SetFailureHandler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			fmt.Println("CSRF FAILURE")
+			w.WriteHeader(http.StatusForbidden)
 		}))
 
 		csrfHandler.SetBaseCookie(http.Cookie{
-			HttpOnly: true,
+			HttpOnly: false,
 			Path:     "/",
 			Secure:   config.InProduction,
 			SameSite: http.SameSiteLaxMode,

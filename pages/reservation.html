@@ -8,7 +8,7 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker.min.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
 
     <title>Reservations</title>
 </head>
@@ -25,11 +25,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -43,9 +41,6 @@
                             </li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -83,25 +78,28 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col">
-            <button id="alert-button" class="btn btn-primary mt-1">Test Button</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col">
+                <button id="alert-button" class="btn btn-primary mt-1">Test Button</button>
+            </div>
         </div>
     </div>
 
-    <div class="row text-center my-footer">
-        <div class="col">
-            Left
-        </div>
-        <div class="col">
-            Middle
-        </div>
-        <div class="col">
-            Right
+    <div class="container-fluid">
+        <div class="row text-center my-footer">
+            <div class="col">
+                Left
+            </div>
+            <div class="col">
+                Middle
+            </div>
+            <div class="col">
+                Right
+            </div>
         </div>
     </div>
-
 
 
 
@@ -117,7 +115,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker-full.min.js"></script>
     <script src="https://unpkg.com/notie"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <script src="/pages/js/main.js" type="module"></script>
 </body>
 

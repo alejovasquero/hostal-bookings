@@ -1,0 +1,48 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="container mt-4">
+
+    <div class="row">
+        <div class="col">
+            <img src="../static/images/rooms/marjors-suite.png"
+                class="img-fluid img-thumbnail mx-auto d-block room-image" alt="Generals Suite Image">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">
+                Majors Suite
+            </h1>
+            <p class="text-center">
+                Your best place for illegal bussiness. Your best place for illegal bussiness. Your best place for
+                illegal bussiness. Your best place for illegal bussiness. Your best place for illegal bussiness.
+                Your best place for illegal bussiness. Your best place for illegal bussiness. Your best place for
+                illegal bussiness. Your best place for illegal bussiness. Your best place for illegal bussiness.
+                Your best place for illegal bussiness. Your best place for illegal bussiness.
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col text-center">
+            <a id="search-availavility" class="btn btn-success">Check Availavility</a>
+        </div>
+    </div>
+</div>
+{{end}}
+
+{{define "scripts"}}
+<script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker-full.min.js"></script>
+<script src="https://unpkg.com/notie"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="module" src="/pages/js/buttons.js"></script>
+<script type="module">
+    buttons.createPopUpForButton("search-availavility",
+    function(result){
+        console.log(result)
+    })
+</script>
+
+{{end}}

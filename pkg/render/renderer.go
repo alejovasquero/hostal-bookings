@@ -10,6 +10,7 @@ import (
 
 	"github.com/alejovasquero/hostal-bookings/config"
 	"github.com/alejovasquero/hostal-bookings/models"
+	"github.com/justinas/nosurf"
 )
 
 var appConfig *config.AppConfig
@@ -57,7 +58,7 @@ func WriteTemplateCache(templateName string, w http.ResponseWriter) {
 	}
 }
 
-func WriteTemplateFromFullCache(templateName string, w http.ResponseWriter, data *models.TemplateData) {
+func WriteTemplateFromFullCache(templateName string, r *http.Request, w http.ResponseWriter, data *models.TemplateData) {
 	var templates map[string]*template.Template
 	var err error
 
@@ -82,7 +83,7 @@ func WriteTemplateFromFullCache(templateName string, w http.ResponseWriter, data
 
 	buffer := new(bytes.Buffer)
 
-	data = addDefaultTemplateData(data)
+	data = addDefaultTemplateData(data, r)
 
 	err = finalTemplate.Execute(buffer, data)
 
@@ -110,7 +111,10 @@ func readTemplateToCache(templateName string) error {
 	return nil
 }
 
-func addDefaultTemplateData(td *models.TemplateData) *models.TemplateData {
+func addDefaultTemplateData(td *models.TemplateData, req *http.Request) *models.TemplateData {
+	token := nosurf.Token(req)
+	td.CSRFToken = token
+
 	return td
 }
 

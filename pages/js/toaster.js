@@ -57,30 +57,33 @@ export const notifier = function () {
             title = "Date selection"
         } = config
 
-        const { value: formValues } = await Swal.fire({
+        const { value: result } = await Swal.fire({
             title: title,
             html: html,
-            focusConfirm: false,
+            focusConfirm: true,
             showCancelButton: true,
             width: "50em",
             didOpen: () => {
-                const elem = document.getElementById('date-range-modal');
-                const datepicker = new DateRangePicker(elem, {
-                    autohide: false,
-                    format: "dd/mm/yyyy",
-                    orientation: "top"
-                });
+                console.log(config)
+                if (config.didOpen !== undefined) {
+                    config.didOpen()
+                }
             },
             preConfirm: () => {
-                return [
-                    document.getElementById('start').value,
-                    document.getElementById('end').value
-                ]
-            }
+                return config.preConfirm()
+            },
+
         })
 
-        if (formValues) {
-            Swal.fire(JSON.stringify(formValues))
+        console.log(config)
+        if (result) {
+            if (result.dismiss !== Swal.DismissReason.cancel) {
+                if (config.callback !== undefined) {
+                    config.callback(result)
+                }
+            } else {
+                config.callback(false)
+            }
         }
     }
 

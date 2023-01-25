@@ -1,0 +1,47 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container mt-4">
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <h1 class="mt-5">Search for availability</h1>
+
+                <form action="/search-availability" method="POST" class="needs-validation" novalidate>
+                    <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+                    <div id="new-date-range" class="form-row row mt-3">
+                        <div class="col">
+                            <input type="text" autocomplete="off" auto required name="start_date" class="form-control"
+                                placeholder="Arrival date">
+                        </div>
+
+                        <div class="col">
+                            <input type="text" autocomplete="off" required name="end_date" class="form-control"
+                                placeholder="Departure date">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <button type="submit" class="btn btn-primary mt-1">Search Availability</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col">
+                <button id="alert-button" class="btn btn-primary mt-1">Test Button</button>
+            </div>
+        </div>
+    </div>
+{{end}}
+
+{{define "scripts"}}
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker-full.min.js"></script>
+    <script src="https://unpkg.com/notie"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/pages/js/main.js" type="module"></script>
+{{end}}

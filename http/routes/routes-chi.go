@@ -20,6 +20,12 @@ func RoutesWithChi(app *config.AppConfig) http.Handler {
 
 	mux.Get("/", handler.Repo.Index)
 	mux.Get("/about", handler.Repo.About)
+	mux.Get("/contact", handler.Repo.Contact)
+	mux.Get("/rooms/jigsaw", handler.Repo.Jigsaw)
+	mux.Get("/rooms/torture-premium", handler.Repo.Torture)
+	mux.Get("/search-availability", handler.Repo.SearchAvalability)
+
+	mux.Post("/search-availability", handler.Repo.PostAvalability)
 
 	fileServer := http.FileServer(http.Dir("./static"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))

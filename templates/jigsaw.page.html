@@ -1,0 +1,79 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="/static/images/rooms/generals-quarters.png"
+                class="img-fluid img-thumbnail mx-auto d-block room-image" alt="Generals Suite Image">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">
+                Generals Suite
+            </h1>
+            <p class="text-center">
+                Your best place for illegal bussiness. Your best place for illegal bussiness. Your best place for
+                illegal bussiness. Your best place for illegal bussiness. Your best place for illegal bussiness.
+                Your best place for illegal bussiness. Your best place for illegal bussiness. Your best place for
+                illegal bussiness. Your best place for illegal bussiness. Your best place for illegal bussiness.
+                Your best place for illegal bussiness. Your best place for illegal bussiness.
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col text-center">
+            <a id="search-availavility" class="btn btn-success">Check Availability</a>
+        </div>
+    </div>
+</div>
+{{end}}
+
+{{define "scripts"}}
+<script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker-full.min.js"></script>
+<script src="https://unpkg.com/notie"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="module" src="/pages/js/buttons.js"></script>
+<script type="module">
+    let configButton = {
+
+        callback: function (result) {
+
+            let form = document.getElementById("range-date-form")
+            let formData = new FormData(form)
+            formData.append("csrf_token", "{{.CSRFToken}}")
+
+            fetch("/search-availability", {
+                method: "POST",
+                body: formData,
+            })
+                .then(data => {
+                    console.log(data.json())
+                    console.log(data.status)
+                }).catch(err => {
+                    console.log(err)
+                })
+        },
+        didOpen: function () {
+            const elem = document.getElementById('date-range-modal');
+            const datepicker = new DateRangePicker(elem, {
+                autohide: false,
+                format: "dd/mm/yyyy",
+                orientation: "top"
+            });
+        },
+        preConfirm: function () {
+            return {
+                dismiss: false,
+                dates: [document.getElementById('start').value, document.getElementById('end').value]
+            }
+        }
+    }
+
+    buttons.createPopUpForButton("search-availavility", configButton)
+</script>
+
+{{end}}
