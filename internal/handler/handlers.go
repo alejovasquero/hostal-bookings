@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/alejovasquero/hostal-bookings/config"
-	"github.com/alejovasquero/hostal-bookings/models"
-	"github.com/alejovasquero/hostal-bookings/pkg/render"
+	config "github.com/alejovasquero/hostal-bookings/internal/configs"
+	"github.com/alejovasquero/hostal-bookings/internal/render"
+	"github.com/alejovasquero/hostal-bookings/pkg/models"
 )
 
 var Repo *HttpTemplateRepository
@@ -57,6 +57,10 @@ func (hr *HttpTemplateRepository) Torture(w http.ResponseWriter, r *http.Request
 
 func (hr *HttpTemplateRepository) SearchAvalability(w http.ResponseWriter, r *http.Request) {
 	render.WriteTemplateFromFullCache("search-availability.page.html", r, w, &models.TemplateData{})
+}
+
+func (hr *HttpTemplateRepository) MakeReservation(w http.ResponseWriter, r *http.Request) {
+	render.WriteTemplateFromFullCache("make-reservation.page.html", r, w, &models.TemplateData{})
 }
 
 type jsonResponse struct {

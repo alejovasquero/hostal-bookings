@@ -1,0 +1,40 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="container">
+    <h1>Make a reservation</h1>
+    <h5>Reservation details</h3>
+
+        <form action="" method="POST" class="needs-validation" novalidate>
+            <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+            <div id="new-date-range" class="form-row mt-3">
+                <div class="col">
+                    <input type="text" autocomplete="off" auto required name="first_name" class="form-control"
+                        placeholder="First Name">
+                </div>
+                <hr>
+                <div class="mb-3">
+                    <input type="text" autocomplete="off" required name="last_name" class="form-control"
+                        placeholder="Last Name">
+                </div>
+                <hr>
+                <div class="mb-3">
+                    <input type="email" autocomplete="off" required name="email" class="form-control"
+                        placeholder="Email">
+                </div>
+                <hr>
+                <div class="mb-3">
+                    <input type="number" autocomplete="off" required name="cellphone" class="form-control"
+                        placeholder="Phone Number">
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary mt-1">Make reservation</button>
+        </form>
+</div>
+{{end}}
+
+{{define "scripts"}}
+    <script src="/static/js/main.js" type="module"></script>
+{{end}}

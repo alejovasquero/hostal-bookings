@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/alejovasquero/hostal-bookings/config"
-	"github.com/alejovasquero/hostal-bookings/http/routes"
-	"github.com/alejovasquero/hostal-bookings/pkg/handler"
-	"github.com/alejovasquero/hostal-bookings/pkg/render"
+	config "github.com/alejovasquero/hostal-bookings/internal/configs"
+	"github.com/alejovasquero/hostal-bookings/internal/handler"
+	"github.com/alejovasquero/hostal-bookings/internal/render"
+	"github.com/alejovasquero/hostal-bookings/pkg/routes"
 	"github.com/alexedwards/scs/v2"
 )
 

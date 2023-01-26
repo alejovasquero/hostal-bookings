@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/alejovasquero/hostal-bookings/config"
+	config "github.com/alejovasquero/hostal-bookings/internal/configs"
 	"github.com/justinas/nosurf"
 )
 

@@ -6,5 +6,6 @@ Bookings application for a nice hostal.
 - Uses the [chi router](https://github.com/go-chi/chi)
 - Uses [SCS](https://github.com/alexedwards/scs) session management
 - Uses [nosurf](github.com/justinas/nosurf) for CSRF protection
+- Project beautifier from https://github.com/golang-standards/project-layout
 
-![](./img/logo.jpg)
+![](assets/img/logo.jpg)

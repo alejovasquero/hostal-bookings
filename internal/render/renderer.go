@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/alejovasquero/hostal-bookings/config"
-	"github.com/alejovasquero/hostal-bookings/models"
+	config "github.com/alejovasquero/hostal-bookings/internal/configs"
+	"github.com/alejovasquero/hostal-bookings/pkg/models"
 	"github.com/justinas/nosurf"
 )
 
@@ -20,7 +20,7 @@ func NewtTemplateRenderer(conf *config.AppConfig) {
 }
 
 func WriteTemplate(templateName string, w http.ResponseWriter) {
-	loadTemplate, err := template.ParseFiles("./templates/"+templateName, "./templates/base.layout.html")
+	loadTemplate, err := template.ParseFiles("./web/templates/"+templateName, "./web/templates/base.layout.html")
 	if err != nil {
 		fmt.Println("Error in the tamplate load: ", err)
 		return
@@ -121,7 +121,7 @@ func addDefaultTemplateData(td *models.TemplateData, req *http.Request) *models.
 func CacheAllTemplates() (map[string]*template.Template, error) {
 	loadedTemplates := map[string]*template.Template{}
 
-	files, err := filepath.Glob("./templates/*.html")
+	files, err := filepath.Glob("./web/templates/*.html")
 
 	if err != nil {
 		return loadedTemplates, err
@@ -139,10 +139,10 @@ func CacheAllTemplates() (map[string]*template.Template, error) {
 
 		loadedTemplates[fileName] = loadTemplate
 
-		filenames, err := filepath.Glob("./templates/*.layout.html")
+		filenames, err := filepath.Glob("./web/templates/*.layout.html")
 
 		if err == nil && len(filenames) > 0 {
-			loadTemplate.ParseGlob("./templates/*.layout.html")
+			loadTemplate.ParseGlob("./web/templates/*.layout.html")
 		} else {
 			log.Println("No layouts found")
 		}

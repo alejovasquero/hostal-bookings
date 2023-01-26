@@ -3,8 +3,8 @@ package routes
 import (
 	"net/http"
 
-	"github.com/alejovasquero/hostal-bookings/config"
-	"github.com/alejovasquero/hostal-bookings/pkg/handler"
+	config "github.com/alejovasquero/hostal-bookings/internal/configs"
+	"github.com/alejovasquero/hostal-bookings/internal/handler"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
@@ -24,13 +24,12 @@ func RoutesWithChi(app *config.AppConfig) http.Handler {
 	mux.Get("/rooms/jigsaw", handler.Repo.Jigsaw)
 	mux.Get("/rooms/torture-premium", handler.Repo.Torture)
 	mux.Get("/search-availability", handler.Repo.SearchAvalability)
+	mux.Get("/make-reservation", handler.Repo.MakeReservation)
 
 	mux.Post("/search-availability", handler.Repo.PostAvalability)
 
-	fileServer := http.FileServer(http.Dir("./static"))
+	fileServer := http.FileServer(http.Dir("./web/static"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
 
-	fileServerHtml := http.FileServer(http.Dir("./pages"))
-	mux.Handle("/pages/*", http.StripPrefix("/pages", fileServerHtml))
 	return mux
 }
